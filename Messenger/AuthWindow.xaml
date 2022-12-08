@@ -1,0 +1,72 @@
+﻿<Window x:Class="Messenger.AuthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Messenger"
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Синк линк" Height="500" Width="700"
+        Name="FirstWindow" Icon="Logotip_2.ico" >
+
+    <Window.Background>
+        <ImageBrush ImageSource="Image/fon_1.png" />
+    </Window.Background>
+
+
+    <Grid>
+
+        <!-- Окошко для ввода лоигна и пароля -->
+        <Border MinWidth="500" Margin="15" VerticalAlignment="Center" Padding="30" MaxWidth="600" CornerRadius="50">
+
+            <!-- Контейнер для меню ввода логина и пароля -->
+            <StackPanel Height="220" Width="600" Margin="-30,0,0,0">
+
+                <!-- Текст с "Добро пожаловать в Синк линк " -->
+                <TextBlock Margin="10 0 10 10" Text="Добро пожаловать в Синк линк!" FontSize="30" FontWeight="Bold" Width="480" Foreground="#d9d1c4" />
+
+                <Grid>
+                    <!-- Создание кнопок "Регистрация" и "Войти" -->
+                    <Button BorderThickness="0" HorizontalAlignment="Left" Content="Регистрация" Click="Button_Window_Regist_Click" Margin="108,0,0,10" Background="#d9d1c4" Foreground="#000000" Grid.ColumnSpan="2"/>
+                    <Button BorderThickness="0" HorizontalAlignment="Right" Content="Войти" Margin="0,0,109,11" Background="#d9d1c4" Foreground="#000000" />
+                </Grid>
+
+                <!-- Текст для логина с подсказкой -->
+                <TextBox x:Name="Text_login" Margin="108 0 108 10">
+                    <TextBox.Style>
+                        <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
+                            <Style.Resources>
+                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                    <VisualBrush.Visual>
+                                        <Label Content="Введите логин" Foreground="#505739" />
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <!--Триггеры нужны для появления и исчезновения подсказки -->
+                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="Text" Value="{x:Null}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="Background" Value="White" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+
+                <!-- Текст с паролём, повторным паролём и подсказкой -->
+                <PasswordBox x:Name="Text_password" Height="20" Width="323"  Margin="0 0 0 10" Background="#d9d1c4" Foreground="#000000" PasswordChar="*" />
+
+                <!-- Кнопка "Зарегистрироваться" -->
+                <Button BorderThickness="0" HorizontalAlignment="Center" Content="Войти в кабинет" Height="28" Margin="0,0,0,10" Background="#d9d1c4" Foreground="#000000" Grid.ColumnSpan="2" Click="Button_Auth_Click" />
+
+            </StackPanel>
+
+        </Border>
+    </Grid>
+    
+</Window>
