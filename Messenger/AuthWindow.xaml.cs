@@ -13,7 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Messenger
-{
+{   
+    // Саня ЛОХ
     /// <summary>
     /// Логика взаимодействия для AuthWindow.xaml
     /// </summary>
